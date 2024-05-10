@@ -81,7 +81,7 @@ spec:
       - name: move-files
         image: alpine
         command: ["/bin/sh", "-c"]
-        args: ["cp -r /git-data/temp/proxy/* /server && rm -rf /git-data/temp"]
+        args: ["cp -r /git-data/temp/proxy /server && rm -rf /git-data/temp"]
         volumeMounts:
         - name: git-repo-volume
           mountPath: /git-data
