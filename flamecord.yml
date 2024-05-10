@@ -1,0 +1,154 @@
+custom-motd:
+  motd:
+    enabled: true
+    motds:
+    - |-
+      &r             <SOLID:ee2b23>T<SOLID:3551d7>F<SOLID:00ff00>B &8- <GRADIENT:ee2b23>The</GRADIENT:f26622> <GRADIENT:3551d7>Flying</GRADIENT:3adce1> <GRADIENT:00ff00>Birds</GRADIENT:faff00> &8| &e1.20.1&a
+                 &cWe are under maintenance &7- &abrb :)
+  sample:
+    enabled: false
+    samples:
+    - |-
+      &eDefault &cFlameCord&e server &7(%onlineplayers%/%maxplayers%)
+      &eEdit on &cflamecord.yml&7 (IridiumColorAPI HEX)
+  protocol:
+    enabled: true
+    name: '&c&lMaintenance'
+    always-show: true
+  maxplayers:
+    enabled: false
+    amount: 1000
+    justonemore: false
+  fakeplayers:
+    enabled: false
+    amount: 3
+    mode: DIVISION
+tcp-fast-open: 3
+logger:
+  initialhandler: true
+  exceptions: true
+  dump: true
+  haproxy: true
+  detailed-connect-errors: true
+allow-invalid-names: false
+antibot:
+  accounts:
+    enabled: false
+    firewall: false
+    limit: 3
+    log: true
+    whitelist:
+    - Nickname
+  country:
+    enabled: true
+    firewall: true
+    blacklist:
+    - CN
+    - HK
+    - RU
+    - IN
+    - TH
+    - ID
+    - DZ
+    - VN
+    - IR
+    - PK
+    log: true
+    whitelist: []
+  fastchat:
+    enabled: false
+    firewall: true
+    time: 1000
+    log: true
+  firewall:
+    enabled: false
+    exceptions:
+    - BadPacketException
+    - QuietException
+    - IllegalStateConfig
+    - FastException
+    time: 60
+    log: true
+    whitelist:
+    - 127.0.0.1
+    - 62.243.56.151
+    ipset: true
+  nickname:
+    enabled: true
+    firewall: true
+    blacklist:
+    - mcstorm
+    - mcdown
+    - mcbot
+    - theresa_bot
+    - dropbot
+    - kingbot
+    log: true
+  password:
+    enabled: true
+    firewall: true
+    limit: 3
+    log: true
+    login-commands:
+    - '/login '
+    - '/l '
+    - '/register '
+    - '/reg '
+  ratelimit:
+    enabled: true
+    firewall: true
+    connections-per-second: 3
+    pings-per-second: 64
+    log: true
+    whitelist:
+    - 127.0.0.1
+    - 62.243.56.151
+  reconnect:
+    enabled: true
+    attempts: 2
+    pings: 0
+    max-time: 10000
+    connection-threshold: 1
+    connection-threshold-limit: 8000
+    log: true
+    ping-attempts: 0
+    min-time: 1000
+    connections-trigger: 1
+    seconds-active: 2
+    geyser-bypass: true
+    whitelist: true
+  packets:
+    enabled: true
+    log: true
+    debug: false
+    vls-per-byte: 0.0017
+    vls-per-packet: 0.1
+    vls-to-kick: 100.0
+  proxy:
+    enabled: true
+    log: true
+    firewall: true
+    online-check: false
+    email: flamecord@gmail.com
+    whitelist:
+    - 127.0.0.1
+    - 62.243.56.151
+    lists:
+    - https://raw.githubusercontent.com/TheSpeedX/PROXY-List/master/http.txt
+    - https://raw.githubusercontent.com/clarketm/proxy-list/master/proxy-list-raw.txt
+    - https://raw.githubusercontent.com/mertguvencli/http-proxy-list/main/proxy-list/data.txt
+    - https://raw.githubusercontent.com/scriptzteam/ProtonVPN-VPN-IPs/main/exit_ips.txt
+    - https://raw.githubusercontent.com/mmpx12/proxy-list/master/ips-list.txt
+    - https://check.torproject.org/torbulkexitlist?ip=1.1.1.1
+    - https://cinsscore.com/list/ci-badguys.txt
+    - https://lists.blocklist.de/lists/all.txt
+    - https://blocklist.greensnow.co/greensnow.txt
+    - https://raw.githubusercontent.com/firehol/blocklist-ipsets/master/stopforumspam_7d.ipset
+compression-level: 6
+balancer:
+  enabled: false
+  on-join: true
+  fallback: true
+  servers:
+  - lobby
+large-payloads: false
