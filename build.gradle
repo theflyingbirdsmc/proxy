@@ -33,7 +33,7 @@ if("$System.env.MAVEN_URL" != null) {
 dependencies {
     implementation 'Server:Flamecord:1.9.1'
     implementation 'Plugin:Votifier-Bungee:2.7.3'
-    implementation 'Plugin:ChatControlRed-Bungee:10.26.+'
+    implementation 'Plugin:BungeeControl-Red-Bungee:3.17.+'
     implementation 'Plugin:BuycraftX-Bungee:12.0.8'
     implementation 'Plugin:LuckPerms-Bungee:5.4.108'
     implementation 'Plugin:spark-Bungee:1.10.55'
