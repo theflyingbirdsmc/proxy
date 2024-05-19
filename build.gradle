@@ -1,7 +1,26 @@
+import java.util.jar.JarFile
+import org.yaml.snakeyaml.Yaml
+
+buildscript {
+  repositories {
+    maven {
+      url "https://plugins.gradle.org/m2/"
+    }
+  }
+  dependencies {
+    classpath("org.yaml:snakeyaml:2.0")
+    classpath "org.jfrog.buildinfo:build-info-extractor-gradle:5.1.10"
+  }
+}
+
 plugins {
     id 'java'
     id 'groovy'
 }
+
+apply plugin: "com.jfrog.artifactory"
+apply plugin: 'maven-publish'
+
 
 // Use environment instead of gradle.properties
 if("$System.env.MAVEN_URL" != null) {
@@ -9,6 +28,7 @@ if("$System.env.MAVEN_URL" != null) {
     ext.MAVEN_PASSWORD="$System.env.MAVEN_PASSWORD"
     ext.MAVEN_USERNAME="$System.env.MAVEN_USERNAME"
 }
+
 
 dependencies {
     implementation 'Server:Flamecord:1.9.1'
