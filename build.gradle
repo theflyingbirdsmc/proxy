@@ -13,7 +13,7 @@ if("$System.env.MAVEN_URL" != null) {
 dependencies {
     implementation 'Server:Flamecord:1.9.1'
     implementation 'Plugin:Votifier-Bungee:2.7.3'
-    implementation 'Plugin:BungeeControl-Red-Bungee:3.15.1'
+    implementation 'Plugin:ChatControlRed-Bungee:10.26.+'
     implementation 'Plugin:BuycraftX-Bungee:12.0.8'
     implementation 'Plugin:LuckPerms-Bungee:5.4.108'
     implementation 'Plugin:spark-Bungee:1.10.55'
@@ -66,3 +66,106 @@ task server(type: Copy) {
 }
 
 task update(dependsOn: ['server', 'plugins', 'expansions'])
+
+ext.dir = new File("_plugins")
+def files = ext.dir.listFiles().findAll { it.isFile() && it.name.endsWith('.jar') }
+def allowedPrefixes = ["Paper", "Flamecord","Purpur", "Expansion"]
+
+def dists = []
+
+files.each { file ->
+if (allowedPrefixes.any { prefix -> file.name.startsWith(prefix) } && file.name.endsWith(".jar")) {
+        def fileName = file.name - '.jar' // Remove the ".jar" extension
+        
+        if (fileName.startsWith("Expansion-")) {
+            // Handle Expansion files
+            def parts = fileName.split('-')
+            // println(parts)
+            if (parts.size() >= 1) {
+                def groupId = "PAPI-Expansion"
+                def artifactId = "Expansion-" + parts[1]
+                def version = parts[2]
+
+                def path = file
+
+                println("Found Expansion JAR: groupId=$groupId, artifactId=$artifactId, version=$version, path=$path")
+
+                dists << [groupId: groupId, artifactId: artifactId, version: version, path: path]
+            }
+        } else {
+            // Handle Paper and FlameCord files
+            def parts = fileName.split('-')
+            println(parts.toString())
+            def groupId = "Server"
+            def artifactId = parts[0]
+            def version = parts[1]
+            
+            // Extract the version from the file name
+            if (parts.size() > 2) {
+                version += "-" + parts[2]
+            }
+            
+            def path = file
+
+            println("Found JAR: groupId=$groupId, artifactId=$artifactId, version=$version, path=$path")
+
+            dists << [groupId: groupId, artifactId: artifactId, version: version, path: path]
+            
+        }
+    } else {
+        def jarFile = new JarFile(file)
+        def pluginYml = (jarFile.getEntry("plugin.yml") != null) ? jarFile.getEntry("plugin.yml") : jarFile.getEntry("bungee.yml")
+        
+        if (pluginYml != null) {
+            def yaml = new Yaml()
+            def plugin = yaml.load(jarFile.getInputStream(pluginYml))
+            
+            def groupId = "Plugin"
+            def artifactId = plugin.name
+            //Adds "-Bungee" to artifact name for plugins like LuckPerms that wont rename their plugin when it's a Bungee-plugin.
+            if(file.name.contains("Bungee") && !artifactId.contains("Bungee") || jarFile.getEntry("bungee.yml") && !jarFile.getEntry("plugin.yml")) 
+                artifactId += "-Bungee"
+            def version = plugin.version.toString()
+            
+            if (version.contains(" ") || version.contains(";")) {
+                version = version.replace(" ", "-").replace(";", "-")
+            }
+            
+            def path = file
+
+            println("Found JAR: groupId=$groupId, artifactId=$artifactId, version=$version, path=$path")
+
+            dists << [groupId: groupId, artifactId: artifactId, version: version, path: path]
+        }
+    }
+}
+
+publishing {
+    publications {
+        dists.each { dist ->
+            "$dist.artifactId"(MavenPublication) {
+                groupId dist.groupId
+                version = dist.version
+                artifactId = dist.artifactId
+
+                artifact dist.path
+            }
+        }
+    }
+}
+
+artifactory {
+    contextUrl = "https://jfrog.theflyingbirds.net/artifactory"
+    publish {
+        repository {
+            repoKey = 'tfb'
+            username = "${MAVEN_USERNAME}"
+            password = "${MAVEN_PASSWORD}"
+        }
+        defaults {
+            dists.each { dist ->
+                publications(dist.artifactId)
+            }
+        }
+    }
+}
