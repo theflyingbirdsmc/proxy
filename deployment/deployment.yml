@@ -144,3 +144,27 @@ spec:
       resources:
         requests:
           storage: 10Gi
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: plan-ingress
+  namespace: tfb-servers
+  annotations:
+    cert-manager.io/cluster-issuer: theflyingbirds-prod
+spec:
+  tls:
+  - hosts:
+    - stats.theflyingbirds.net
+    secretName: plan-tls
+  rules:
+  - host: stats.theflyingbirds.net
+    http:
+      paths:
+      - backend:
+          service:
+            name: proxy-service
+            port:
+              number: 8804
+        path: /
+        pathType: Prefix
