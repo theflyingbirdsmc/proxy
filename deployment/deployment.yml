@@ -117,6 +117,7 @@ spec:
             value: "/server/server.jar"
         ports:
           - containerPort: 25565
+          - containerPort: 8804
         volumeMounts:
           - name: proxy-pv
             mountPath: /server
