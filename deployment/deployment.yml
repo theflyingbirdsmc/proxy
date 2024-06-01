@@ -164,7 +164,7 @@ spec:
       paths:
       - backend:
           service:
-            name: proxy-service
+            name: proxy
             port:
               number: 8804
         path: /
