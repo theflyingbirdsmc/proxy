@@ -109,7 +109,7 @@ spec:
         args: ["cd /server && gradle update -PmavenUrl=$MAVEN_URL -PmavenUsername=$MAVEN_USERNAME -PmavenPassword=$MAVEN_PASSWORD"]
       containers:
       - name: proxy
-        image: itzg/bungeecord
+        image: itzg/bungeecord:java21
         env:
           - name: TYPE
             value: "CUSTOM"
