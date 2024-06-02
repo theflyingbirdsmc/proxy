@@ -5,6 +5,7 @@ custom-motd:
     - |-
       &r             <SOLID:ee2b23>T<SOLID:3551d7>F<SOLID:00ff00>B &8- <GRADIENT:ee2b23>The</GRADIENT:f26622> <GRADIENT:3551d7>Flying</GRADIENT:3adce1> <GRADIENT:00ff00>Birds</GRADIENT:faff00> &8| &e1.20.1&a
                  &cWe are under maintenance &7- &abrb :)
+    server-placeholders: false
   sample:
     enabled: false
     samples:
@@ -144,6 +145,12 @@ antibot:
     - https://lists.blocklist.de/lists/all.txt
     - https://blocklist.greensnow.co/greensnow.txt
     - https://raw.githubusercontent.com/firehol/blocklist-ipsets/master/stopforumspam_7d.ipset
+  lockdown:
+    enabled: true
+    log: true
+    duration: 5000
+    period: 5000
+    period-limit: 4
 compression-level: 6
 balancer:
   enabled: false

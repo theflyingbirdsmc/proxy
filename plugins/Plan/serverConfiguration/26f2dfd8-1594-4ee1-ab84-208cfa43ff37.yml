@@ -1,17 +1,15 @@
 # -----------------------------------------------------
-# Plan Bungee Configuration file
+# Plan Bukkit Configuration file
 # More information about each setting:
-# https://github.com/plan-player-analytics/Plan/wiki/Bungee-Configuration
 # https://github.com/plan-player-analytics/Plan/wiki/Bukkit-Configuration
 # -----------------------------------------------------
 Server:
-    IP: mc.theflyingbirds.net
-    ServerName: Plan
-Network:
-    Name: The Flying Birds
+    ServerName: Vanilla
 # -----------------------------------------------------
 Plugin:
     Logging:
+        # More information about Locale
+        # https://github.com/plan-player-analytics/Plan/wiki/Localization
         Locale: default
         Create_new_locale_file_on_next_enable: false
         Dev: false
@@ -21,10 +19,13 @@ Plugin:
         # Display update notification on the website
         Check_for_updates: true
         Notify_about_DEV_releases: false
+    Configuration:
+        Allow_proxy_to_manage_settings: true
 # -----------------------------------------------------
-# Supported databases: MySQL
+# Supported databases: SQLite, MySQL
 # -----------------------------------------------------
 Database:
+    Type: MySQL
     MySQL:
         Host: tfb-database-mariadb
         Port: 3306
@@ -45,12 +46,11 @@ Webserver:
     Port: 8804
     Alternative_IP:
         # %port% is replaced automatically with Webserver.Port
-        # Address: 0.0.0.0.:%port%
         Address: stats.theflyingbirds.net
-        Enabled: true
+        Enabled: false
     # InternalIP usually does not need to be changed, only change it if you know what you're doing!
     # 0.0.0.0 allocates Internal (local) IP automatically for the WebServer.
-    Internal_IP: 0.0.0.0
+    Internal_IP: mc.theflyingbirds.net
     Cache:
         Reduced_refresh_barrier:
             Unit: SECONDS
@@ -66,20 +66,17 @@ Webserver:
             Time: 5
     Security:
         SSL_certificate:
-            KeyStore_path: proxy
+            KeyStore_path: Cert.jks
             Key_pass: default
             Store_pass: default
             Alias: alias
-        # Key_pass: tfb123
-        # Store_pass: tfb123
-        # Alias: tfb
         # HTTPS is required for Login.
         Disable_authentication: false
         # Cross-Origin Resource Sharing (Requests from non-Plan web pages)
         # https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS
         CORS:
             Allow_origin: "*"
-        # Allows using the whitelist & brute-force shield with a reverse-proxy.
+        # Allows using the whitelist with a reverse-proxy.
         # ! Make sure non-proxy access is not possible, it would allow IP spoofing !
         Use_X-Forwarded-For_Header: false
         IP_whitelist:
@@ -102,8 +99,8 @@ Webserver:
             Remove_logs_after_days: 30
         # Disable /auth/register endpoint
         Disable_registration: false
-    Disable_Webserver: false
-    External_Webserver_address: "https://stats.theflyingbirds.net"
+    Disable_Webserver: true
+    External_Webserver_address: https://stats.theflyingbirds.net
     # Use absolute path ("C:\Example\Path", "/var/example/path") or relative ("public_html" -> {server}/plugins/Plan/public_html)
     # NOTE: All files in this directory can be read by anyone who can access the webserver.
     # This can be used to host certbot http challenge file, or for customizing Plan React-bundle
@@ -113,9 +110,12 @@ Data_gathering:
     Geolocations: true
     # Please accept the EULA to download GeoLite2 IP-Country Database
     # https://www.maxmind.com/en/geolite2/eula
-    Accept_GeoLite2_EULA: true
+    Accept_GeoLite2_EULA: false
     Ping: true
     Disk_space: true
+    Commands:
+        Log_unknown: false
+        Log_aliases_as_main_command: true
     # Does not affect already gathered data
     Preserve_join_address_case: false
     # This can be changed to your own MaxMind URL if you have license https://dev.maxmind.com/geoip/updating-databases?lang=en#directly-downloading-databases
@@ -198,8 +198,8 @@ Display_options:
         Main: '&2'
         Secondary: '&7'
         Highlight: '&f'
-    # Can use ${playerName} or ${playerUUID}
-    Player_head_image_url: "https://cravatar.eu/helmavatar/${playerUUID}/120.png"
+    # Can use ${playerName} or ${playerUUID} or ${playerUUIDNoDash}
+    Player_head_image_url: "https://crafatar.com/avatars/${playerUUID}?size=120&default=MHF_Steve&overlay"
 # -----------------------------------------------------
 Formatting:
     Decimal_points: '#.##'
@@ -212,8 +212,8 @@ Formatting:
         Days: '%days%d '
         Hours: '%hours%h '
         Minutes: '%minutes%m '
-        Seconds: '%seconds%s'
-        Zero: '0s'
+        Seconds: '%seconds%s '
+        Zero: 0s
     # Dates settings use Java SimpleDateFormat.
     # You can find the patterns & examples here:
     # https://docs.oracle.com/javase/7/docs/api/java/text/SimpleDateFormat.html
@@ -222,7 +222,7 @@ Formatting:
         Show_recent_day_names: true
         Full: 'MMM d YYYY, HH:mm:ss'
         NoSeconds: 'MMM d YYYY, HH:mm'
-        JustClock: 'HH:mm:ss'
+        JustClock: HH:mm:ss
         # TimeZone Option uses format 'GMT+2' or 'GMT-04:30'
         # Other valid options are 'server' and 'UTC'
         TimeZone: 'server'
@@ -238,23 +238,8 @@ World_aliases:
     List:
         world: world
         world_nether: world_nether
-        Creative: Creative
-        parkour: parkour
-        Gokke: Gokke
         world_the_end: world_the_end
-        test: test
-        TFBCreative: TFBCreative
-        GiantTree: GiantTree
-        teen: teen
-        Experimental: Experimental
-        TEST: "TEST"
-        temp: "temp"
-        RealArchitecture: "RealArchitecture"
-        TheLandOfTheFree: "TheLandOfTheFree"
-        world_creative: "world_creative"
-        world_backup: "world_backup"
-        world_parkour: "world_parkour"
-        world_lobby: "world_lobby"
+        world_vanilla: "world_vanilla"
     # List of - "alias:regex" rules, Set alias of multiple worlds that match regex to group them
     Regex:
       - "Alias for world:^abc$"
@@ -274,6 +259,7 @@ Export:
         Players_page: false
         Server_page: false
         Server_JSON: false
+    # All player pages/JSON can be exported by using /plan m export players
     Export_player_on_login_and_logout: false
     # If there are multiple servers the period is divided evenly to avoid export of all servers at once
     # Also affects Players page export
@@ -287,17 +273,35 @@ Export:
 # If a plugin is causing issues the integration can be disabled by setting Plugin_name.Enabled: false
 # -----------------------------------------------------
 Plugins:
-    AdvancedBan:
-        Enabled: true
     Buycraft:
         # http://help.buycraft.net/article/36-where-to-find-the-secret-key
-        Secret: "-"
+        Secret: ''
+        Enabled: false
+    Economy (Vault):
+        Enabled: true
+    Essentials:
+        Enabled: true
+    EssentialsEco:
+        Enabled: true
+    Factions:
+        HideFactions:
+          - ExampleFaction
     LuckPerms:
         Enabled: true
+    Permission Groups (Vault):
+        Enabled: true
+    PlaceholderAPI:
+        Load_these_placeholders_on_join:
+          - '%plan_server_uuid%'
+        Tracked_player_placeholders:
+          - '%example_placeholder%'
+        Enabled: true
+    Towny:
+        HideTowns:
+          - ExampleTown
     ViaVersion:
         Enabled: true
-    nuVotifier:
+    mcMMO:
         Enabled: true
-# The files are placed in /Plan/web/ if the setting is 'true' when accessed.
 Customized_files:
     Path: "web"

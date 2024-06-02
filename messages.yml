@@ -140,3 +140,22 @@ antibot_proxy: |-
   &cYou are using a Proxy/VPN! ({0})
 
   &cError? Contact us on discord.gg/gF36AT3
+antibot_reconnect_reconnect: '&cReconnect &b{0}&c more times'
+antibot_reconnect_ping: '&cRefresh server list &b{0}&c more times'
+antibot_reconnect_message: |-
+  &c&lFlameCord
+
+  {0}
+  {1}
+
+  &c(Do it slowly)
+
+  &cError? Contact us on discord.gg/gF36AT3
+antibot_lockdown: |-
+  &c&lFlameCord
+
+  &cServer locked. ¡Wait a minute to join!
+
+  &cError? Contact us on discord.gg/gF36AT3
+antibot_stats_actionbar: '&ePings: &f{0}/s &7- &eConnections: &f{1}/s&7 - &eFirewalled:&f
+  {2}'

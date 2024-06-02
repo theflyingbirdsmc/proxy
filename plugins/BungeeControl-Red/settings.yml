@@ -2,9 +2,9 @@
 #                       Welcome to the main configuration of BungeeControl
 # !-----------------------------------------------------------------------------------------------!
 #
-#  *IMPORTANT* Ensure you set a unique name for each server in "server.properties" file
-#              in your slave servers. The name must be the same as your server name in
-#              BungeeCord config.yml.
+#  *IMPORTANT* Ensure you set a unique name for each server in bungee.yml file
+#              in your Spigot/Paper servers. The name must be the same as your server name in
+#              BungeeCord's config.yml.
 #
 # !-----------------------------------------------------------------------------------------------!
 
@@ -65,7 +65,7 @@ Tab_Complete:
   # Example: This will remove the "survival" tab completion when trying to tab complete /server.
   #
   # Filter_Arguments:
-  #   server: [survival]
+  #   server: [survival, creative] # filter "/server survival" and "/server creative" suggestions
   #     
   Filter_Arguments:
 
@@ -125,12 +125,8 @@ Integration:
     # https://github.com/kangarko/ChatControl-Red/wiki/Variables#bungeecontrol-red-variables
     Player_Name: '{player_nick}'
 
-
 # -------------------------------------------------------------------------------------------------
-# Enable the ability of ChatControl on Spigot to forward console commands?
-#
-# At this point we are investigating a potential vulnerability so we recommend enabling this only
-# for private servers with trusted clients.
+# Enable the ability of ChatControl Red to forward console commands?
 # -------------------------------------------------------------------------------------------------
 Enable_Forward_Command: false
 
@@ -145,7 +141,7 @@ Enable_Forward_Command: false
 # will miss out and then waste time reading our Wiki and opening tickets where things could easily
 # be explained simply by reading the console.
 #
-# Available: bungee, bungee-sync, operator, redis, player-message
+# Available: bungee, operator, redis, player-message
 # -------------------------------------------------------------------------------------------------
 Debug: []
 
