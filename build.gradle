@@ -31,7 +31,7 @@ if("$System.env.MAVEN_URL" != null) {
 
 
 dependencies {
-    implementation 'Server:Flamecord:1.9.1'
+    implementation 'Server:FlameCord:2.1.0'
     implementation 'Plugin:Votifier-Bungee:2.7.3'
     implementation 'Plugin:BungeeControl-Red-Bungee:3.17.+'
     implementation 'Plugin:BuycraftX-Bungee:12.0.8'
@@ -60,7 +60,7 @@ task plugins(type: Copy) {
     delete fileTree(dir: 'plugins/.', include: '/*.jar')
     }
     from configurations.compileClasspath
-    exclude '*Paper*', '*Flamecord*', '*Expansion*', 'Purpur*'
+    exclude '*Paper*', '*FlameCord*', '*Expansion*', 'Purpur*'
     into 'plugins'
 }
 
@@ -80,7 +80,7 @@ task server(type: Copy) {
     delete fileTree(dir: '/.' , include: 'server.jar')
     }
     from configurations.compileClasspath
-    include 'Paper-*', 'Flamecord-*', 'Purpur-*'
+    include 'Paper-*', 'FlameCord-*', 'Purpur-*'
     rename '.*-(.+)', 'server.jar'
     into "."
 }
@@ -89,7 +89,7 @@ task update(dependsOn: ['server', 'plugins', 'expansions'])
 
 ext.dir = new File("_plugins")
 def files = ext.dir.listFiles().findAll { it.isFile() && it.name.endsWith('.jar') }
-def allowedPrefixes = ["Paper", "Flamecord","Purpur", "Expansion"]
+def allowedPrefixes = ["Paper", "FlameCord","Purpur", "Expansion"]
 
 def dists = []
 
