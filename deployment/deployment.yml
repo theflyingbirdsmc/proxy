@@ -118,6 +118,8 @@ spec:
         ports:
           - containerPort: 25565
           - containerPort: 8804
+        command: ["/bin/sh", "-c"]
+        args: ["apt-get update && apt-get install -y screen && screen -dmS minecraft /start && tail -f /dev/null"]
         volumeMounts:
           - name: proxy-pv
             mountPath: /server
