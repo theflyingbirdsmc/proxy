@@ -118,8 +118,8 @@ spec:
         ports:
           - containerPort: 25565
           - containerPort: 8804
-        command: ["/bin/bash", "-c"]
-        args: ["apt-get update && apt-get install -y apt-utils screen && echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selections && screen -dmS minecraft /start && tail -f /dev/null"]
+        command: ["/bin/sh", "-c"]
+        args: ["dpkg-reconfigure tzdata && apt-get update && apt-get install -y screen && screen -dmS minecraft /start && tail -f /dev/null"]
         securityContext:
             runAsUser: 0
             runAsGroup: 0
