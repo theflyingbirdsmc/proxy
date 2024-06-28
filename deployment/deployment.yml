@@ -81,17 +81,17 @@ spec:
       - name: move-files
         image: alpine
         command: ["/bin/sh", "-c"]
-        args: ["cp -r /git-data/temp/* /server && rm -rf /git-data/temp"]
+        args: ["cp -r /git-data/temp/* /data && rm -rf /git-data/temp"]
         volumeMounts:
         - name: git-repo-volume
           mountPath: /git-data
         - name: proxy-pv
-          mountPath: /server
+          mountPath: /data
       - name: gradle-build
         image: gradle:latest
         volumeMounts:
         - name: proxy-pv
-          mountPath: /server
+          mountPath: /data
         env:
         - name: MAVEN_URL
           value: "https://jfrog.theflyingbirds.net/artifactory"  # Set your Maven repository URL here
@@ -106,7 +106,7 @@ spec:
               name: gradle-credentials
               key: token
         command: ["/bin/sh", "-c"]
-        args: ["cd /server && gradle update -PmavenUrl=$MAVEN_URL -PmavenUsername=$MAVEN_USERNAME -PmavenPassword=$MAVEN_PASSWORD"]
+        args: ["cd /data && gradle update -PmavenUrl=$MAVEN_URL -PmavenUsername=$MAVEN_USERNAME -PmavenPassword=$MAVEN_PASSWORD"]
       containers:
       - name: proxy
         image: itzg/bungeecord:java21
@@ -114,19 +114,19 @@ spec:
           - name: TYPE
             value: "CUSTOM"
           - name: BUNGEE_JAR_FILE
-            value: "/server/server.jar"
+            value: "/data/server.jar"
         ports:
           - containerPort: 25565
           - containerPort: 8804
-        command: ["/bin/sh", "-c"]
-        args: ["apt-get update && apt-get install -y screen && screen -dmS minecraft /start && tail -f /dev/null"]
-        securityContext:
-            runAsUser: 0
-            runAsGroup: 0
-            allowPrivilegeEscalation: true
+        # command: ["/bin/sh", "-c"]
+        # args: ["apt-get update && apt-get install -y screen && screen -dmS minecraft /start && tail -f /dev/null"]
+        # securityContext:
+        #     runAsUser: 0
+        #     runAsGroup: 0
+        #     allowPrivilegeEscalation: true
         volumeMounts:
           - name: proxy-pv
-            mountPath: /server
+            mountPath: /data
           - name: git-repo-volume
             mountPath: /git-data
         resources:
