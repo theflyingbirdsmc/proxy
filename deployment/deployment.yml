@@ -17,6 +17,9 @@ spec:
     - name: plan
       port: 8804
       targetPort: 8804
+    - name: votifier
+      port: 8192
+      targetPort: 8192
   selector:
     run: proxy
 ---
@@ -120,6 +123,7 @@ spec:
         ports:
           - containerPort: 25565
           - containerPort: 8804
+          - containerPort: 8192
         command: ["/bin/sh",]
         args: [ "-c", "apt-get update && apt-get install -y screen && screen -dmS minecraft /usr/bin/run-bungeecord.sh && tail -f /dev/null"]
         securityContext:
