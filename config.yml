@@ -1,22 +1,8 @@
+server_connect_timeout: 5000
 enforce_secure_profile: false
-listeners:
-- bind_local_address: true
-  force_default_server: true
-  forced_hosts:
-    pvp.md-5.net: pvp
-  host: 0.0.0.0:25565
-  max_players: 2024
-  motd: ''
-  ping_passthrough: false
-  priorities:
-  - danish-survival
-  proxy_protocol: false
-  query_enabled: true
-  query_port: 25565
-  tab_list: GLOBAL_PING
-  tab_size: 60
 remote_ping_cache: -1
-network_compression_threshold: 256
+forge_support: false
+player_limit: 2021
 permissions:
   admin:
   - bungeecord.command.alert
@@ -26,26 +12,48 @@ permissions:
   default:
   - bungeecord.command.server
   - bungeecord.command.list
-log_pings: true
-connection_throttle_limit: 3
-server_connect_timeout: 5000
 timeout: 20000
-stats: eeff8c06-80b0-49a1-ab8c-697022039a24
-player_limit: 2021
-ip_forward: true
-groups:
-  md_5:
-  - admin
-remote_ping_timeout: 5000
-connection_throttle: 4000
 log_commands: false
-prevent_proxy_connections: false
 online_mode: true
-forge_support: false
-disabled_commands:
-- revertaddresses
 servers:
+  lobby:
+    address: mc.theflyingbirds.net:30001
+    motd: ''
+    restricted: false
   danish-survival:
     address: mc.theflyingbirds.net:30005
     motd: ''
     restricted: false
+  english-survival:
+    address: mc.theflyingbirds.net:30100
+    motd: ''
+    restricted: false
+listeners:
+- bind_local_address: true
+  force_default_server: true
+  forced_hosts:
+  host: 0.0.0.0:25565
+  max_players: 2024
+  motd: ''
+  ping_passthrough: false
+  priorities:
+  - lobby
+  proxy_protocol: false
+  query_enabled: true
+  query_port: 25565
+  tab_list: GLOBAL_PING
+  tab_size: 60
+prevent_proxy_connections: false
+remote_ping_timeout: 5000
+ip_forward: true
+network_compression_threshold: 256
+reject_transfers: false
+disabled_commands:
+- revertaddresses
+connection_throttle: 4000
+stats: eeff8c06-80b0-49a1-ab8c-697022039a24
+connection_throttle_limit: 3
+groups:
+  md_5:
+  - admin
+log_pings: true
