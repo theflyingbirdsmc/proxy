@@ -29,6 +29,7 @@ custom-motd:
     - |-
       &r             <SOLID:ee2b23>T<SOLID:3551d7>F<SOLID:00ff00>B &8- <GRADIENT:ee2b23>The</GRADIENT:f26622> <GRADIENT:3551d7>Flying</GRADIENT:3adce1> <GRADIENT:00ff00>Birds</GRADIENT:faff00> &8| &e1.20.4&a
       &r          &eSome day is not a day of the week.
+    server-placeholders: false
   sample:
     enabled: false
     samples:
@@ -78,11 +79,25 @@ antibot:
     - IR
     - PK
     log: true
+    whitelist: []
   fastchat:
     enabled: false
     firewall: true
     time: 1000
     log: true
+    log_cooldown: 1000
+    repetition:
+      enabled: true
+      chat: true
+      threshold: 2
+      length: 16
+      period: 5000
+      commands:
+      - /r
+      - /reg
+      - /register
+      firewall: false
+      kick: false
   firewall:
     enabled: false
     exceptions:
@@ -111,6 +126,11 @@ antibot:
     firewall: true
     limit: 3
     log: true
+    login-commands:
+    - '/login '
+    - '/l '
+    - '/register '
+    - '/reg '
   ratelimit:
     enabled: true
     firewall: true
@@ -127,6 +147,12 @@ antibot:
     connection-threshold: 1
     connection-threshold-limit: 8000
     log: true
+    ping-attempts: 0
+    min-time: 1000
+    connections-trigger: 1
+    seconds-active: 5
+    geyser-bypass: true
+    whitelist: true
   packets:
     enabled: true
     log: true
@@ -134,6 +160,7 @@ antibot:
     vls-per-byte: 0.0017
     vls-per-packet: 0.1
     vls-to-kick: 100.0
+    firewall: true
   proxy:
     enabled: true
     log: true
@@ -153,4 +180,35 @@ antibot:
     - https://lists.blocklist.de/lists/all.txt
     - https://blocklist.greensnow.co/greensnow.txt
     - https://raw.githubusercontent.com/firehol/blocklist-ipsets/master/stopforumspam_7d.ipset
+  latency:
+    enabled: true
+    firewall: true
+    limit: 900
+    log: true
+  lockdown:
+    enabled: true
+    log: true
+    duration: 5000
+    period: 5000
+    period-limit: 4
 compression-level: 6
+balancer:
+  enabled: false
+  on-join: true
+  fallback: true
+  servers:
+  - lobby
+large-payloads: false
+maintenance:
+  enabled: false
+  protocol: '&c&lMaintenance'
+  motd: |-
+    &c&lMaintenance
+    &cCome back later!
+  sample:
+  - '&c&lMaintenance'
+  - '&cCome back later!'
+  kick: |-
+    &c&lMaintenance
+
+    &cCome back later!
