@@ -1,0 +1,14 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: Proxy
+  description: TFB Proxy
+  annotations:
+    github.com/project-slug: theflyingbirdsmc/proxy
+    'backstage.io/kubernetes-namespace': tfb-servers
+    'backstage.io/kubernetes-id': proxy
+  #   backstage.io/techdocs-ref: dir:.
+spec:
+  type: service
+  owner: theflyingbirdsmc/staff
+  lifecycle: production
