@@ -96,11 +96,11 @@ data:
 
   # The name of the database to store LuckPerms data in.
   # - This must be created already. Don't worry about this setting if you're using MongoDB.
-  database: luckperms
+  database: tfb_network_luckperms
 
   # Credentials for the database.
-  username: tfb_luckperms
-  password: 'uEJq!fjGM!62*&cmX*mBRhT9L2@SgX'
+  username: tfb_network
+  password: '$Z@jJKSLcd7xUekU5qF&VW3#ndU&mm'
 
   # These settings apply to the MySQL connection pool.
   # - The default values will be suitable for the majority of users.
