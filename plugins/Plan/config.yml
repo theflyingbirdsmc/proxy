@@ -26,7 +26,7 @@ Plugin:
 # -----------------------------------------------------
 Database:
     MySQL:
-        Host: tfb-database-mariadb
+        Host: tfb-network-dk
         Port: 3306
         User: tfb_network
         Password: $Z@jJKSLcd7xUekU5qF&VW3#ndU&mm
