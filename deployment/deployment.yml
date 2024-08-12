@@ -5,9 +5,9 @@ metadata:
   name: proxy
   namespace: tfb-servers
   annotations:
-  #  "mc-router.itzg.me/externalServerName": "mc.theflyingbirds.net"
     backstage.io/kubernetes-id: proxy
-    metallb.universe.tf/allow-shared-ip: "mykey-65.108.8.46"
+  labels:
+    backstage.io/kubernetes-id: proxy
 spec:
   type: LoadBalancer
   loadBalancerIP: 65.108.8.46
@@ -23,8 +23,7 @@ spec:
       targetPort: 8192
   selector:
     run: proxy
-  labels:
-    backstage.io/kubernetes-id: proxy
+
 ---
 apiVersion: apps/v1
 kind: StatefulSet
