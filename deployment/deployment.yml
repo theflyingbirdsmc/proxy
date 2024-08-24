@@ -293,3 +293,23 @@ spec:
               number: 8192
         path: /
         pathType: Prefix
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: flamecord-ingress
+  annotations:
+    cert-manager.io/cluster-issuer: theflyingbirds-prod
+    nginx.ingress.kubernetes.io/use-proxy-protocol: "true"
+spec:
+  rules:
+  - host: mc.theflyingbirds.net
+    http:
+      paths:
+      - backend:
+          service:
+            name: proxy
+            port:
+              number: 25565
+        path: /
+        pathType: Prefix
