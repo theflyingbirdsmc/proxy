@@ -6,6 +6,7 @@ metadata:
   namespace: tfb-servers
   annotations:
     backstage.io/kubernetes-id: proxy
+    service.beta.kubernetes.io/do-loadbalancer-enable-proxy-protocol: "true"
   labels:
     backstage.io/kubernetes-id: proxy
 spec:
