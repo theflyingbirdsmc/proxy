@@ -203,8 +203,8 @@ maintenance:
   enabled: false
   protocol: '&c&lMaintenance'
   motd: |-
-      &r             <SOLID:ee2b23>T<SOLID:3551d7>F<SOLID:00ff00>B &8- <GRADIENT:ee2b23>The</GRADIENT:f26622> <GRADIENT:3551d7>Flying</GRADIENT:3adce1> <GRADIENT:00ff00>Birds</GRADIENT:faff00> &8| &e1.21.&a
-                 &cWe are under maintenance &7- &abrb :)
+    &r             <SOLID:ee2b23>T<SOLID:3551d7>F<SOLID:00ff00>B &8- <GRADIENT:ee2b23>The</GRADIENT:f26622> <GRADIENT:3551d7>Flying</GRADIENT:3adce1> <GRADIENT:00ff00>Birds</GRADIENT:faff00> &8| &e1.21.&a
+               &cWe are under maintenance &7- &abrb :)
   sample:
   - '&c&lMaintenance'
   - '&cCome back later!'
@@ -212,3 +212,5 @@ maintenance:
     &c&lMaintenance
 
     &cCome back later!
+  whitelist:
+  - ''

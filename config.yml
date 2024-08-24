@@ -39,7 +39,7 @@ listeners:
   ping_passthrough: false
   priorities:
   - lobby
-  proxy_protocol: false
+  proxy_protocol: true
   query_enabled: true
   query_port: 25565
   tab_list: GLOBAL_PING
