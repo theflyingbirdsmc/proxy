@@ -40,6 +40,7 @@ dependencies {
     implementation 'Plugin:Reconnect-Bungee:1.6.12'
     // implementation 'Vulcan:VulcanBungee:1.0.6'
     implementation 'Plugin:VotingPlugin-Bungee:6.16.1'
+    implementation 'Plugin:UnifiedMetrics-Bungee:0.3.8'
 }
 
 // TFB Artifactory
