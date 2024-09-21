@@ -1,0 +1,20 @@
+streamers:
+- name: "fuglen_tv"
+  globalStreamerTag:
+    globalStreamerTag_Premium: "TFBDrops"
+  settings:
+    streamerOptions:
+      botCommandEnabled: true
+      mcChatMessageEnabled: false
+      dropFromOwnStream: true
+      commandFilter: false
+    twitchRewards:
+    - rewardTitle: "your reward title"
+      commands:
+      - "smpublic This is a public broadcast as example"
+      watchTimeOption:
+        enabled: false
+        combineTime: true
+        watchTimeMinutes: 1
+        numberOfUses: 1
+  twitchBotName_Premium: "Fuglemor"

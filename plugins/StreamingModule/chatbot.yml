@@ -1,0 +1,15 @@
+chatCommands:
+- command: "viewtime"
+  enabled: true
+  mcCommandList:
+  - "sendtwitch %streamer% @%twitchuser% have watched Twitch streams for %watchtime%\
+    \ minutes and got %dropsamount% drops"
+  streamer:
+  - "*"
+  user:
+  - "*"
+  options:
+    enabled: false
+    combineTime: true
+    watchTimeMinutes: 1
+    numberOfUses: 1

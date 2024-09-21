@@ -159,3 +159,22 @@ antibot_lockdown: |-
   &cError? Contact us on discord.gg/gF36AT3
 antibot_stats_actionbar: '&ePings: &f{0}/s &7- &eConnections: &f{1}/s&7 - &eFirewalled:&f
   {2}'
+antibot_latency: |-
+  &c&lFlameCord
+
+  &c¡Your ping is too high! ({0}ms)
+
+  &cError? Contact us on discord.gg/gF36AT3
+antibot_fastchat_cancel: '&c¡You are repeating chats too fast! Please &lSTOP!!!&r'
+flamecord_accounts_help: '&9Usage: /accounts &e<add/remove> <ip> <name>'
+flamecord_accounts_add: '&aNickname &e{0} &ahas been added to the account with IP
+  &e{1}.'
+flamecord_accounts_remove: '&aNickname &e{0} &ahas been removed from the account with
+  IP &e{1}.'
+flamecord_accounts_clear: '&aAll nicknames have been cleared from the account with
+  IP &e{0}.'
+flamecord_bkick_nopermission: '&cYou don''t have permission to use this command!'
+flamecord_bkick_default: '&cYou have been kicked from the server.'
+flamecord_bkick_notfound: '&cPlayer not found or is not currently connected.'
+flamecord_bkick_usage: '&cUsage: /bkick <player> [reason]'
+flamecord_bkick: '&c{0} has been kicked from the server.'

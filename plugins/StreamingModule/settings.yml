@@ -1,0 +1,34 @@
+debug: false
+dropOptions:
+  interval: 60
+  dropChance: 5
+  randomDrops: 1
+  allowMultiStreams: true
+  dropsOnlyForOnlinePlayer: false
+  dropsOnlyForFollower: false
+blacklistWorlds:
+- "ExampleWordName2"
+- "FarmWorldName2"
+drops:
+- "gmysteryboxes give %player% 1 ex=7d c:(1:40,2:30,3:25,4:15,5:10) msg=false | sendtwitch\
+  \ %streamer% @%twitchuser% recieved 1 Mystery Egg! PogChamp"
+sqlSettings:
+  enable: true
+  driver: "jdbc:mysql:"
+  server: "tfb-network-db.coder-fuglen.svc.cluster.local"
+  port: "3306"
+  database: "tfb_network_streamingmodule"
+  user: "tfb_network"
+  password: "ifFfF4cUeEYVXCZ4a5494sjVS8oBZL"
+twitchChatFormat: "[%twitchuser% (%twitchplayer%)](%twitchcolor%):&f %twitchmessage%"
+watchTime:
+  enabled: true
+  interval: 5
+placeholder:
+  liveTag: "🔴"
+  offlineTag: "&f[&7Offline&f]"
+discord:
+  enable: false
+  webhookUrl: "https://discordapp.com/api/webhooks/..."
+  username: "StreamingModule"
+streamerListOnJoin: false
