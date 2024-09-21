@@ -10,7 +10,8 @@ metadata:
   labels:
     backstage.io/kubernetes-id: proxy
 spec:
-  type: LoadBalancer
+  type: LoadBalancer 
+  externalTrafficPolicy: Local
   loadBalancerIP: 65.108.8.46
   ports:
     - name: minecraft
@@ -293,23 +294,23 @@ spec:
               number: 8192
         path: /
         pathType: Prefix
----
-apiVersion: networking.k8s.io/v1
-kind: Ingress
-metadata:
-  name: flamecord-ingress
-  annotations:
-    cert-manager.io/cluster-issuer: theflyingbirds-prod
-    nginx.ingress.kubernetes.io/use-proxy-protocol: "true"
-spec:
-  rules:
-  - host: mc.theflyingbirds.net
-    http:
-      paths:
-      - backend:
-          service:
-            name: proxy
-            port:
-              number: 25565
-        path: /
-        pathType: Prefix
+# ---
+# apiVersion: networking.k8s.io/v1
+# kind: Ingress
+# metadata:
+#   name: flamecord-ingress
+#   annotations:
+#     cert-manager.io/cluster-issuer: theflyingbirds-prod
+#     nginx.ingress.kubernetes.io/use-proxy-protocol: "true"
+# spec:
+#   rules:
+#   - host: mc.theflyingbirds.net
+#     http:
+#       paths:
+#       - backend:
+#           service:
+#             name: proxy
+#             port:
+#               number: 25565
+#         path: /
+#         pathType: Prefix
