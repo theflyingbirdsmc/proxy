@@ -30,7 +30,7 @@ Database:
         Port: 3306
         User: tfb_network
         Password: ifFfF4cUeEYVXCZ4a5494sjVS8oBZL
-        Database: tfb_network_streamingmodule
+        Database: tfb_network_plan
         # Launch options to append after mysql driver address
         Launch_options: "?rewriteBatchedStatements=true&useSSL=false&serverTimezone=UTC"
         Max_connections: 8
