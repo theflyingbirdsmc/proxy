@@ -46,14 +46,14 @@ remote:
   # If it is "auto", for standalone version the remote address will be set to 127.0.0.1,
   # for plugin versions, it is recommended to keep this as "auto" so Geyser will automatically configure address, port, and auth-type.
   # Leave as "auto" if floodgate is installed.
-  address: 95.217.44.106
+  address: 10.1.218.23
   # The port of the remote (Java Edition) server
   # For plugin versions, if address has been set to "auto", the port will also follow the server's listening port.
   port: 30001
   # Authentication type. Can be offline, online, or floodgate (see https://github.com/GeyserMC/Geyser/wiki/Floodgate).
   # For plugin versions, it's recommended to keep the `address` field to "auto" so Floodgate support is automatically configured.
   # If Floodgate is installed and `address:` is set to "auto", then "auth-type: floodgate" will automatically be used.
-  auth-type: online
+  auth-type: floodgate
   # Whether to enable PROXY protocol or not while connecting to the server.
   # This is useful only when:
   # 1) Your server supports PROXY protocol (it probably doesn't)
@@ -187,7 +187,7 @@ metrics:
   # If metrics should be enabled
   enabled: true
   # UUID of server, don't change!
-  uuid: f1698955-ef46-4620-a634-63f43f1e7608
+  uuid: 74b18830-b331-4c18-a1c8-b10800043b1a
 
 # ADVANCED OPTIONS - DO NOT TOUCH UNLESS YOU KNOW WHAT YOU ARE DOING!
 
