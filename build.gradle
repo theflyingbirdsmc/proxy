@@ -40,7 +40,7 @@ dependencies {
     implementation 'Plugin:Reconnect-Bungee:1.6.12'
     implementation 'Plugin:StreamingModule:1.0.7'
     implementation 'Plugin:VotingPlugin-Bungee:6.16.1'
-    implementation 'Plugin:floodgate:2.2.3-SNAPSHOT-(b112-0360721)'
+    // implementation 'Plugin:floodgate:2.2.3-SNAPSHOT-(b112-0360721)'
     implementation 'Plugin:Geyser-BungeeCord-Bungee:2.4.3-20241016.171659-1'
     // implementation 'Vulcan:VulcanBungee:1.0.6'
     // implementation 'Plugin:UnifiedMetrics-Bungee:0.3.8'
