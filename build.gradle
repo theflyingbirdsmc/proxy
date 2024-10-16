@@ -31,9 +31,9 @@ if("$System.env.MAVEN_URL" != null) {
 
 
 dependencies {
-    implementation 'Server:FlameCord:2.1.8'
-    implementation 'Plugin:Votifier:2.7.3'
-    implementation 'Plugin:BungeeControl-Red-Bungee:3.17.+'
+    implementation 'Server:FlameCord:2.2.1'
+    implementation 'Plugin:Votifier-Bungee:2.7.3'
+    implementation 'Plugin:BungeeControl-Red-Bungee:3.17.3'
     implementation 'Plugin:Tebex-Bungee:2.0.+'
     implementation 'Plugin:LuckPerms-Bungee:5.4.141'
     implementation 'Plugin:Plan:5.6-build-2883'
