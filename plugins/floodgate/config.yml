@@ -16,7 +16,7 @@ replace-spaces: true
 # Should the proxy send the bedrock player data to the servers it is connecting to?
 # This requires Floodgate to be installed on the servers.
 # You'll get kicked if you don't use the plugin. The default value is false because of it
-send-floodgate-data: false
+send-floodgate-data: true
 
 
 disconnect:

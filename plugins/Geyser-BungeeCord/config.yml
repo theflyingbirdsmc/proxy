@@ -14,7 +14,7 @@
 bedrock:
   # The IP address that will listen for connections.
   # Generally, you should only uncomment and change this if you want to limit what IPs can connect to your server.
-  #address: 0.0.0.0
+  address: 0.0.0.0
   # The port that will listen for connections
   port: 19132
   # Some hosting services change your Java port everytime you start the server and require the same port to be used for Bedrock.
@@ -46,10 +46,10 @@ remote:
   # If it is "auto", for standalone version the remote address will be set to 127.0.0.1,
   # for plugin versions, it is recommended to keep this as "auto" so Geyser will automatically configure address, port, and auth-type.
   # Leave as "auto" if floodgate is installed.
-  address: 10.1.218.23
+  address: localhost
   # The port of the remote (Java Edition) server
   # For plugin versions, if address has been set to "auto", the port will also follow the server's listening port.
-  port: 30001
+  port: 25565
   # Authentication type. Can be offline, online, or floodgate (see https://github.com/GeyserMC/Geyser/wiki/Floodgate).
   # For plugin versions, it's recommended to keep the `address` field to "auto" so Floodgate support is automatically configured.
   # If Floodgate is installed and `address:` is set to "auto", then "auth-type: floodgate" will automatically be used.
@@ -108,7 +108,7 @@ forward-player-ping: false
 max-players: 100
 
 # If debug messages should be sent through console
-debug-mode: false
+debug-mode: true
 
 # Allow a fake cooldown indicator to be sent. Bedrock players otherwise do not see a cooldown as they still use 1.8 combat.
 # Please note: if the cooldown is enabled, some users may see a black box during the cooldown sequence, like below:

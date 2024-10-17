@@ -23,6 +23,7 @@ spec:
     - name: geyser
       port: 19132
       targetPort: 19132
+      protocol: UDP
     - name: votifier
       port: 8192
       targetPort: 8192
