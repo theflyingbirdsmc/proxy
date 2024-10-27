@@ -31,7 +31,7 @@ if("$System.env.MAVEN_URL" != null) {
 
 
 dependencies {
-    implementation 'Server:FlameCord:2.2.1'
+    implementation 'Server:FlameCord:2.2.4'
     implementation 'Plugin:Votifier-Bungee:2.7.3'
     implementation 'Plugin:BungeeControl-Red-Bungee:3.17.3'
     implementation 'Plugin:Tebex-Bungee:2.0.+'
@@ -41,7 +41,7 @@ dependencies {
     implementation 'Plugin:StreamingModule:1.0.7'
     implementation 'Plugin:VotingPlugin-Bungee:6.16.1'
     implementation 'Plugin:floodgate-Bungee:2.2.3-SNAPSHOT-(b112-0360721)'
-    implementation 'Plugin:Geyser-BungeeCord-Bungee:2.4.3-20241016.171659-1'
+    implementation 'Plugin:Geyser-BungeeCord-Bungee:2.4.4-20241027.120734-1'
     // implementation 'Vulcan:VulcanBungee:1.0.6'
     // implementation 'Plugin:UnifiedMetrics-Bungee:0.3.8'
 }
