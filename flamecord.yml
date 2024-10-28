@@ -191,6 +191,17 @@ antibot:
     duration: 5000
     period: 5000
     period-limit: 4
+  limbo:
+    enabled: true
+    log: true
+    whitelist: true
+    always_captcha: true
+    trigger:
+      connections: 2
+      period: 5
+      seconds-active: 5
+    dimension: 0
+    captcha-count: 100
 compression-level: 6
 balancer:
   enabled: false
@@ -198,9 +209,12 @@ balancer:
   fallback: true
   servers:
   - lobby
+  lobby-command: true
+  command-blacklist:
+  - auth
 large-payloads: false
 maintenance:
-  enabled: false
+  enabled: true
   protocol: '&c&lMaintenance'
   motd: |-
     &r             <SOLID:ee2b23>T<SOLID:3551d7>F<SOLID:00ff00>B &8- <GRADIENT:ee2b23>The</GRADIENT:f26622> <GRADIENT:3551d7>Flying</GRADIENT:3adce1> <GRADIENT:00ff00>Birds</GRADIENT:faff00> &8| &e1.21.&a
@@ -214,3 +228,4 @@ maintenance:
     &cCome back later!
   whitelist:
   - ''
+chained-proxy-support: false
