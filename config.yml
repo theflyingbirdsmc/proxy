@@ -17,7 +17,7 @@ log_commands: false
 online_mode: true
 servers:
   lobby:
-    address: lobby
+    address: lobby:30001
     motd: ''
     restricted: false
   danish-survival:
