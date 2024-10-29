@@ -25,11 +25,11 @@ servers:
     motd: ''
     restricted: false
   cs-tmm:
-    address: mc.theflyingbirds.net:30100
+    address: cs-tmm:30100
     motd: ''
     restricted: false
   creative:
-    address: mc.theflyingbirds.net:30101
+    address: creative:30101
     motd: ''
     restricted: false
 listeners:
