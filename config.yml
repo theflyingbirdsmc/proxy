@@ -1,8 +1,8 @@
 server_connect_timeout: 5000
 enforce_secure_profile: false
+remote_ping_cache: -1
 forge_support: false
 player_limit: 2021
-log_pings: true
 permissions:
   admin:
   - bungeecord.command.alert
@@ -14,17 +14,14 @@ permissions:
   - bungeecord.command.list
 timeout: 20000
 log_commands: false
-network_compression_threshold: 256
 online_mode: true
-disabled_commands:
-- revertaddresses
 servers:
   lobby:
     address: mc.theflyingbirds.net:30001
     motd: ''
     restricted: false
   danish-survival:
-    address: mc.theflyingbirds.net:30005
+    address: danish-survival.tfb-servers.svc.cluster.local:30005
     motd: ''
     restricted: false
   cs-tmm:
@@ -51,14 +48,17 @@ listeners:
   query_port: 25565
   tab_list: GLOBAL_PING
   tab_size: 60
-ip_forward: true
+prevent_proxy_connections: false
 remote_ping_timeout: 5000
+ip_forward: true
+network_compression_threshold: 256
 reject_transfers: false
-remote_ping_cache: -1
+disabled_commands:
+- revertaddresses
 connection_throttle: 4000
 stats: eeff8c06-80b0-49a1-ab8c-697022039a24
 connection_throttle_limit: 3
 groups:
   md_5:
   - admin
-prevent_proxy_connections: false
+log_pings: true
