@@ -17,11 +17,11 @@ log_commands: false
 online_mode: true
 servers:
   lobby:
-    address: mc.theflyingbirds.net:30001
+    address: lobby
     motd: ''
     restricted: false
   danish-survival:
-    address: danish-survival.tfb-servers.svc.cluster.local:30005
+    address: danish-survival:30005
     motd: ''
     restricted: false
   cs-tmm:
