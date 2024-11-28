@@ -32,6 +32,10 @@ servers:
     address: creative:30101
     motd: ''
     restricted: false
+  parkour:
+    address: parkour:30102
+    motd: ''
+    restricted: false
 listeners:
 - bind_local_address: true
   force_default_server: true
