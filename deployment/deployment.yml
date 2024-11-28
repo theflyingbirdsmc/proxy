@@ -15,8 +15,8 @@ spec:
   # loadBalancerIP: 65.108.8.46
   ports:
     - name: minecraft
-      port: 25565
-      targetPort: 25565
+      port: 25566
+      targetPort: 25566
     - name: plan
       port: 8804
       targetPort: 8804
@@ -127,7 +127,7 @@ spec:
           - name: DEBIAN_FRONTEND
             value: noninteractive
         ports:
-          - containerPort: 25565
+          - containerPort: 25566
           - containerPort: 8804
           - containerPort: 8192
         command: ["/bin/sh",]
@@ -294,23 +294,24 @@ spec:
               number: 8192
         path: /
         pathType: Prefix
-# ---
-# apiVersion: networking.k8s.io/v1
-# kind: Ingress
-# metadata:
-#   name: flamecord-ingress
-#   annotations:
-#     cert-manager.io/cluster-issuer: theflyingbirds-prod
-#     nginx.ingress.kubernetes.io/use-proxy-protocol: "true"
-# spec:
-#   rules:
-#   - host: mc.theflyingbirds.net
-#     http:
-#       paths:
-#       - backend:
-#           service:
-#             name: proxy
-#             port:
-#               number: 25565
-#         path: /
-#         pathType: Prefix
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: flamecord-ingress
+  namespace: tfb-servers
+  annotations:
+    cert-manager.io/cluster-issuer: theflyingbirds-prod
+    nginx.ingress.kubernetes.io/use-proxy-protocol: "true"
+spec:
+  rules:
+  - host: mc.theflyingbirds.net
+    http:
+      paths:
+      - backend:
+          service:
+            name: proxy
+            port:
+              number: 25566
+        path: /
+        pathType: Prefix
