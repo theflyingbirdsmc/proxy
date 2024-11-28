@@ -20,10 +20,6 @@ spec:
     - name: plan
       port: 8804
       targetPort: 8804
-    - name: geyser
-      port: 19132
-      targetPort: 19132
-      protocol: UDP
     - name: votifier
       port: 8192
       targetPort: 8192
@@ -132,8 +128,6 @@ spec:
             value: noninteractive
         ports:
           - containerPort: 25565
-          - containerPort: 19132
-            protocol: UDP
           - containerPort: 8804
           - containerPort: 8192
         command: ["/bin/sh",]
