@@ -12,11 +12,11 @@ metadata:
 spec:
   type: LoadBalancer 
   externalTrafficPolicy: Local
-  # loadBalancerIP: 65.108.8.46
+  loadBalancerIP: 95.217.44.106
   ports:
     - name: minecraft
-      port: 25566
-      targetPort: 25566
+      port: 25565
+      targetPort: 25565
     - name: plan
       port: 8804
       targetPort: 8804
@@ -127,7 +127,7 @@ spec:
           - name: DEBIAN_FRONTEND
             value: noninteractive
         ports:
-          - containerPort: 25566
+          - containerPort: 25565
           - containerPort: 8804
           - containerPort: 8192
         command: ["/bin/sh",]
@@ -312,6 +312,6 @@ spec:
           service:
             name: proxy
             port:
-              number: 25566
+              number: 25565
         path: /
         pathType: Prefix

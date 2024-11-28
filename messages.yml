@@ -178,3 +178,41 @@ flamecord_bkick_default: '&cYou have been kicked from the server.'
 flamecord_bkick_notfound: '&cPlayer not found or is not currently connected.'
 flamecord_bkick_usage: '&cUsage: /bkick <player> [reason]'
 flamecord_bkick: '&c{0} has been kicked from the server.'
+antibot_limbo_check_in_progress: '&eChecking...'
+antibot_limbo_check_completed: '&aPassed!'
+antibot_limbo_enter_captcha: '&cNeed Captcha'
+antibot_limbo_wrong_captcha: '&cWrong captcha'
+antibot_limbo_wait_verification: '&eVerification in progress...'
+antibot_limbo_enter_number: '&cPlease write the captcha number'
+antibot_limbo_verification_passed: '&aVerified!'
+antibot_limbo_kick: |-
+  &c&lFlameCord
+
+  &c¡You failed the limbo check!
+
+  &cError? Contact us on discord.gg/gF36AT3
+antibot_limbo_high_latency: |-
+  &c&lFlameCord
+
+  &c¡You failed the limbo check! (Latency)
+
+  &cError? Contact us on discord.gg/gF36AT3
+antibot_limbo_too_big_packet: |-
+  &c&lFlameCord
+
+  &c¡You failed the limbo check! (Big Packet)
+
+  &cError? Contact us on discord.gg/gF36AT3
+antibot_limbo_requires_ping: '&eRefresh the server list'
+antibot_limbo_too_many_checks: '&cToo many checks. Wait 1 minute.'
+flamecord_lobby_not_from_console: '&cThis command cannot be used from the console.'
+flamecord_lobby_command_disabled: '&cThe lobby command is disabled.'
+flamecord_lobby_balancer_disabled: '&cBalancer is currently disabled.'
+flamecord_lobby_no_fallback_configured: '&cThere is no fallback server configured.'
+flamecord_lobby_already_connected: '&eYou are already connected to the fallback server.'
+flamecord_lobby_command_blacklisted: '&cYou cannot use the lobby command from this
+  server.'
+flamecord_lobby_no_servers_available: '&cNo available servers to connect to.'
+flamecord_lobby_connecting: '&aConnecting you to the best available lobby...'
+flamecord_lobby_connection_failed: '&cFailed to connect to the server. Please try
+  again later.'
