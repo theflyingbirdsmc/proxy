@@ -9,7 +9,7 @@ WORKDIR /tfb
 ARG MEMORY
 ENV MEMORY=$MEMORY
 
-EXPOSE 25565
+EXPOSE 25588
 
 RUN chmod +x *.jar
 CMD  ["java", "-Xms128M", "-Xmx2048M", "-jar", "server.jar", "nogui"]
