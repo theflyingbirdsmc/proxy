@@ -2,53 +2,35 @@ import java.util.jar.JarFile
 import org.yaml.snakeyaml.Yaml
 
 buildscript {
-  repositories {
-    maven {
-      url "https://plugins.gradle.org/m2/"
+    repositories {
+        maven {
+            url "https://plugins.gradle.org/m2/"
+        }
     }
-  }
-  dependencies {
-    classpath("org.yaml:snakeyaml:2.0")
-    classpath "org.jfrog.buildinfo:build-info-extractor-gradle:5.1.10"
-  }
+    dependencies {
+        classpath("org.yaml:snakeyaml:2.0")
+    }
 }
 
 plugins {
     id 'java'
     id 'groovy'
+    id 'maven-publish'
 }
 
-apply plugin: "com.jfrog.artifactory"
-apply plugin: 'maven-publish'
-
+apply from: 'dependencies.gradle'
 
 // Use environment instead of gradle.properties
-if("$System.env.MAVEN_URL" != null) {
-    ext.MAVEN_URL="$System.env.MAVEN_URL"+"/"+"tfb"
-    ext.MAVEN_PASSWORD="$System.env.MAVEN_PASSWORD"
-    ext.MAVEN_USERNAME="$System.env.MAVEN_USERNAME"
+if ("$System.env.MAVEN_URL" != null) {
+    ext.MAVEN_URL = "$System.env.MAVEN_URL" + "/tfb"
+    ext.MAVEN_PASSWORD = "$System.env.MAVEN_PASSWORD"
+    ext.MAVEN_USERNAME = "$System.env.MAVEN_USERNAME"
 }
 
-
-dependencies {
-    implementation 'Server:FlameCord:2.2.4'
-    implementation 'Plugin:Votifier-Bungee:2.7.3'
-    implementation 'Plugin:BungeeControl-Red-Bungee:3.17.3'
-    implementation 'Plugin:Tebex-Bungee:2.0.+'
-    implementation 'Plugin:LuckPerms-Bungee:5.4.141'
-    implementation 'Plugin:Plan:5.6-build-2883'
-    implementation 'Plugin:Reconnect-Bungee:1.6.12'
-    implementation 'Plugin:StreamingModule:1.0.7'
-    implementation 'Plugin:VotingPlugin-Bungee:6.16.1'
-    // implementation 'Plugin:floodgate-Bungee:2.2.3-SNAPSHOT-(b114-83fbd6e)'
-    // implementation 'Plugin:Geyser-BungeeCord-Bungee:2.5.0-20241109.155606-1'
-    // implementation 'Vulcan:VulcanBungee:1.0.6'
-    // implementation 'Plugin:UnifiedMetrics-Bungee:0.3.8'
-}
-
-// TFB Artifactory
+// Nexus repository configuration
 repositories {
-    mavenCentral {
+    mavenCentral()
+    maven {
         url "${MAVEN_URL}"
         credentials {
             username = "${MAVEN_USERNAME}"
@@ -59,18 +41,18 @@ repositories {
 
 // Type "gradle plugins" in terminal to update plugins
 task plugins(type: Copy) {
-    doFirst{
-    delete fileTree(dir: 'plugins/.', include: '/*.jar')
+    doFirst {
+        delete fileTree(dir: 'plugins/.', include: '/*.jar')
     }
     from configurations.compileClasspath
-    exclude '*Paper*', '*FlameCord*', '*Expansion*', 'Purpur*'
+    exclude '*Paper*', '*Flamecord*', '*Expansion*', 'Purpur*'
     into 'plugins'
 }
 
 // Type "gradle expansions" in terminal to update PAPI Expansions
 task expansions(type: Copy) {
-    doFirst{
-    delete fileTree(dir: 'plugins/PlaceholderAPI/expansions/.', include: '/*.jar')
+    doFirst {
+        delete fileTree(dir: 'plugins/PlaceholderAPI/expansions/.', include: '/*.jar')
     }
     from configurations.compileClasspath
     include '*Expansion*'
@@ -79,11 +61,11 @@ task expansions(type: Copy) {
 
 // Type "gradle server" in terminal to update server
 task server(type: Copy) {
-    doFirst{
-    delete fileTree(dir: '/.' , include: 'server.jar')
+    doFirst {
+        delete fileTree(dir: '/.', include: 'server.jar')
     }
     from configurations.compileClasspath
-    include 'Paper-*', 'FlameCord-*', 'Purpur-*'
+    include 'Paper-*', 'Flamecord-*', 'Purpur-*'
     rename '.*-(.+)', 'server.jar'
     into "."
 }
@@ -92,12 +74,12 @@ task update(dependsOn: ['server', 'plugins', 'expansions'])
 
 ext.dir = new File("_plugins")
 def files = ext.dir.listFiles().findAll { it.isFile() && it.name.endsWith('.jar') }
-def allowedPrefixes = ["Paper", "FlameCord","Purpur", "Expansion"]
+def allowedPrefixes = ["Paper", "FlameCord", "Purpur", "Expansion"]
 
 def dists = []
 
 files.each { file ->
-if (allowedPrefixes.any { prefix -> file.name.startsWith(prefix) } && file.name.endsWith(".jar")) {
+    if (allowedPrefixes.any { prefix -> file.name.startsWith(prefix) } && file.name.endsWith(".jar")) {
         def fileName = file.name - '.jar' // Remove the ".jar" extension
         
         if (fileName.startsWith("Expansion-")) {
@@ -133,7 +115,6 @@ if (allowedPrefixes.any { prefix -> file.name.startsWith(prefix) } && file.name.
             println("Found JAR: groupId=$groupId, artifactId=$artifactId, version=$version, path=$path")
 
             dists << [groupId: groupId, artifactId: artifactId, version: version, path: path]
-            
         }
     } else {
         def jarFile = new JarFile(file)
@@ -153,6 +134,12 @@ if (allowedPrefixes.any { prefix -> file.name.startsWith(prefix) } && file.name.
             if (version.contains(" ") || version.contains(";")) {
                 version = version.replace(" ", "-").replace(";", "-")
             }
+
+            // Check for Skript dependency
+            def dependencies = plugin.depend
+            if (dependencies != null && dependencies.contains("Skript")) {
+                groupId = "Skript-Addon"
+            }
             
             def path = file
 
@@ -166,28 +153,21 @@ if (allowedPrefixes.any { prefix -> file.name.startsWith(prefix) } && file.name.
 publishing {
     publications {
         dists.each { dist ->
-            "$dist.artifactId"(MavenPublication) {
-                groupId dist.groupId
-                version = dist.version
+            create(dist.artifactId, MavenPublication) {
+                groupId = dist.groupId
                 artifactId = dist.artifactId
+                version = dist.version
 
                 artifact dist.path
             }
         }
     }
-}
-
-artifactory {
-    contextUrl = "https://jfrog.theflyingbirds.net/artifactory"
-    publish {
-        repository {
-            repoKey = 'tfb'
-            username = "${MAVEN_USERNAME}"
-            password = "${MAVEN_PASSWORD}"
-        }
-        defaults {
-            dists.each { dist ->
-                publications(dist.artifactId)
+    repositories {
+        maven {
+            url = "${MAVEN_URL}"
+            credentials {
+                username = "${MAVEN_USERNAME}"
+                password = "${MAVEN_PASSWORD}"
             }
         }
     }
