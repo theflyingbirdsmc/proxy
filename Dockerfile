@@ -3,3 +3,4 @@ LABEL author="Simon Fugl"
 
 # Copy server files to a tfb folder
 COPY . /data/
+RUN chmod +x /data/server.jar
