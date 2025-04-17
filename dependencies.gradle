@@ -7,6 +7,7 @@ dependencies {
     implementation 'Plugin:Plan:5.6-build-2965'
     implementation 'Plugin:Reconnect-Bungee:1.7.1'
     implementation 'Plugin:StreamingModule-Bungee:5.1.2'
+    implementation 'Plugin:SMlib:1.2'
     implementation 'Plugin:VotingPlugin:6.18.4'
     // implementation 'Plugin:floodgate-Bungee:2.2.3-SNAPSHOT-(b114-83fbd6e)'
     // implementation 'Plugin:Geyser-BungeeCord-Bungee:2.5.0-20241109.155606-1'
