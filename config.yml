@@ -17,7 +17,7 @@ log_commands: false
 online_mode: true
 servers:
   lobby:
-    address: lobby:30001
+    address: lobby.tfb-servers.svc.cluster.local:30001
     motd: ''
     restricted: false
   danish-survival:
