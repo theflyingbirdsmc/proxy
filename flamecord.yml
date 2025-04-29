@@ -122,7 +122,7 @@ antibot:
     - kingbot
     log: true
   password:
-    enabled: true
+    enabled: false
     firewall: true
     limit: 3
     log: true
@@ -132,7 +132,7 @@ antibot:
     - '/register '
     - '/reg '
   ratelimit:
-    enabled: true
+    enabled: false
     firewall: true
     connections-per-second: 3
     pings-per-second: 64
