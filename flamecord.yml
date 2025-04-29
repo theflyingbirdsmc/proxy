@@ -139,6 +139,8 @@ antibot:
     log: true
     whitelist:
     - 127.0.0.1
+    - localhost
+    - ::1
   reconnect:
     enabled: true
     attempts: 2
@@ -169,6 +171,8 @@ antibot:
     email: flamecord@gmail.com
     whitelist:
     - 127.0.0.1
+    - localhost
+    - ::1
     lists:
     - https://raw.githubusercontent.com/TheSpeedX/PROXY-List/master/http.txt
     - https://raw.githubusercontent.com/clarketm/proxy-list/master/proxy-list-raw.txt
