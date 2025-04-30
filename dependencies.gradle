@@ -1,5 +1,5 @@
 dependencies {
-    implementation 'Server:FlameCord:3.4.0'
+    implementation 'Server:FlameCord:2.3.7'
     implementation 'Plugin:Votifier-Bungee:2.7.3'
     // implementation 'Plugin:BungeeControl-Bungee:4.3.0'
     implementation 'Plugin:Tebex-Bungee:2.2.1'
