@@ -132,7 +132,7 @@ antibot:
     - '/register '
     - '/reg '
   ratelimit:
-    enabled: false
+    enabled: true
     firewall: true
     connections-per-second: 3
     pings-per-second: 64
