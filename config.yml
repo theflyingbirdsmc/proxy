@@ -63,6 +63,4 @@ connection_throttle: 4000
 stats: eeff8c06-80b0-49a1-ab8c-697022039a24
 connection_throttle_limit: 3
 groups:
-  md_5:
-  - admin
 log_pings: true
