@@ -36,7 +36,7 @@ listeners:
 - bind_local_address: true
   force_default_server: true
   forced_hosts:
-    pvp.md-5.net: pvp
+    tmm.theflyingbirds.net: cs-tmm
   host: 0.0.0.0:25565
   max_players: 2025
   motd: ''
