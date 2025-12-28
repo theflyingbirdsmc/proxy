@@ -9,8 +9,6 @@ dependencies {
     // implementation 'Plugin:StreamingModule-Bungee:5.1.2'
     // implementation 'Plugin:SMlib:1.2'
     implementation 'Plugin:VotingPlugin:6.18.4'
-    // implementation 'Plugin:floodgate-Bungee:2.2.3-SNAPSHOT-(b114-83fbd6e)'
-    // implementation 'Plugin:Geyser-BungeeCord-Bungee:2.5.0-20241109.155606-1'
     // implementation 'Vulcan:VulcanBungee:1.0.6'
     // implementation 'Plugin:UnifiedMetrics-Bungee:0.3.8'
 }
