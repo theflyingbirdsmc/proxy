@@ -70,8 +70,6 @@ antibot:
     blacklist:
     - CN
     - HK
-    - RU
-    - IN
     - TH
     - ID
     - DZ
